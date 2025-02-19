@@ -1,5 +1,5 @@
-﻿using eCommerce.Core.RepositoryContracts;
-using eCommerce.Infrastructure.Repositories;
+﻿using eCommerce.Core.DataContracts;
+using eCommerce.Infrastructure.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace eCommerce.Infrastructure

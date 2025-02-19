@@ -1,6 +1,6 @@
 ﻿using eCommerce.Core.DTO;
 using eCommerce.Core.Models;
-using eCommerce.Core.RepositoryContracts;
+using eCommerce.Core.DataContracts;
 using eCommerce.Core.ServicesContracts;
 
 namespace eCommerce.Core.Services

@@ -1,11 +1,11 @@
-﻿using eCommerce.Core.RepositoryContracts;
+﻿using eCommerce.Core.DataContracts;
 using eCommerce.Core.Models;
 using System.Diagnostics.CodeAnalysis;
 using eCommerce.Core.DTO;
 
-namespace eCommerce.Infrastructure.Repositories
+namespace eCommerce.Infrastructure.Data
 {
-    internal class UserData : IUserData
+    public class UserData : IUserData
     {
         public async Task<ApplicationUser?> AddUser(ApplicationUser user)
         {

@@ -1,6 +1,6 @@
 ﻿using eCommerce.Core.Models;
 
-namespace eCommerce.Core.RepositoryContracts
+namespace eCommerce.Core.DataContracts
 {
     /// <summary>
     /// Interface que define o contrato de implementação de um repositório de usuários
