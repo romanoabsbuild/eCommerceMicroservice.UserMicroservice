@@ -1,5 +1,6 @@
 using eCommerce.Infrastructure;
 using eCommerce.Core;
+using eCommerce.API.Middleware;
 
 namespace eCommerce.API
 {
@@ -17,7 +18,10 @@ namespace eCommerce.API
             builder.Services.AddControllers();
 
             var app = builder.Build();
-            
+
+            // Adicionar o middleware de tratamento de exceções
+            app.UseExceptionHandlingMiddleware();
+
             app.UseRouting();
 
             app.UseAuthentication();
