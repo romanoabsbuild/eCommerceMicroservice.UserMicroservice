@@ -16,7 +16,7 @@ namespace eCommerce.Infrastructure
         {
             //TODO: adicionar services ao contêiner de Inversão de Control (IoC - Injecçao de dependência)
             //dos serviços da Infraestrutura frequentemente incluem serviços de acesso a dados, cache, o outros componentes de baixo nível.
-            services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IUserData, UserData>();
             return services;
 
         }

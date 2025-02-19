@@ -5,7 +5,7 @@ using eCommerce.Core.DTO;
 
 namespace eCommerce.Infrastructure.Repositories
 {
-    internal class UserRepository : IUserRepository
+    internal class UserData : IUserData
     {
         public async Task<ApplicationUser?> AddUser(ApplicationUser user)
         {
