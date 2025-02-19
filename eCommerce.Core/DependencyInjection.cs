@@ -1,5 +1,10 @@
 ﻿using eCommerce.Core.DataContracts;
 using Microsoft.Extensions.DependencyInjection;
+using eCommerce.
+
+
+using eCommerce.Core.ServicesContracts;
+using eCommerce.Core.Services;
 
 namespace eCommerce.Core
 {
@@ -15,7 +20,7 @@ namespace eCommerce.Core
     {
         //TODO: adicionar services ao contêiner de Inversão de Control (IoC - Injecçao de dependência)
         //dos serviços da Infraestrutura frequentemente incluem serviços de acesso a dados, cache, o outros componentes de baixo nível.
-        services.AddTransient<IUserData, UserDa>();
+        services.AddTransient<IUserService, UserService>();
             return services;
 
     }
