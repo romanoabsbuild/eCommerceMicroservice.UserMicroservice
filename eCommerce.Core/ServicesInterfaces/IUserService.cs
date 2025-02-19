@@ -1,6 +1,6 @@
 ﻿using eCommerce.Core.DTO;
 
-namespace eCommerce.Core.ServiceContracts
+namespace eCommerce.Core.ServicesContracts
 {
     /// <summary>
     /// Contracto para a implementação de um serviço de usuário, com os seus casos de uso
