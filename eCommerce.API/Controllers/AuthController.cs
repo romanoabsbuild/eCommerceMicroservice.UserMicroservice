@@ -1,8 +1,6 @@
 ﻿using eCommerce.Core.DTO;
 using eCommerce.Core.ServicesContracts;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics.CodeAnalysis;
 
 namespace eCommerce.API.Controllers
 {
@@ -18,10 +16,10 @@ namespace eCommerce.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterRequest registerRequest) 
+        public async Task<IActionResult> Register(RegisterRequest registerRequest)
         {
             // Verificar o registerRequest
-            if(registerRequest == null) 
+            if (registerRequest == null)
             {
                 return BadRequest("Dados de registo inválidos");
             }
@@ -29,7 +27,7 @@ namespace eCommerce.API.Controllers
             // Registar o user
             AuthenticationResponse? authenticationResponse = await _userService.Register(registerRequest);
 
-            if (authenticationResponse == null || authenticationResponse.Success == false) 
+            if (authenticationResponse == null || authenticationResponse.Success == false)
             {
                 return BadRequest(authenticationResponse);
             }
@@ -38,16 +36,16 @@ namespace eCommerce.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginRequest loginRequest) 
+        public async Task<IActionResult> Login(LoginRequest loginRequest)
         {
-            if (loginRequest == null) 
+            if (loginRequest == null)
             {
                 return BadRequest("Dados de login inválidos");
             }
 
-           AuthenticationResponse? authenticationResponse = await _userService.Login(loginRequest);
+            AuthenticationResponse? authenticationResponse = await _userService.Login(loginRequest);
 
-            if (authenticationResponse == null || authenticationResponse.Success == false) 
+            if (authenticationResponse == null || authenticationResponse.Success == false)
             {
                 return Unauthorized(authenticationResponse);
             }
