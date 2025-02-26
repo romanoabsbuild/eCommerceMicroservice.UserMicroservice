@@ -1,5 +1,6 @@
 ﻿using eCommerce.Core.DataContracts;
 using eCommerce.Infrastructure.Data;
+using eCommerce.Infrastructure.DbContext;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace eCommerce.Infrastructure
@@ -17,6 +18,7 @@ namespace eCommerce.Infrastructure
             //TODO: adicionar services ao contêiner de Inversão de Control (IoC - Injecçao de dependência)
             //dos serviços da Infraestrutura frequentemente incluem serviços de acesso a dados, cache, o outros componentes de baixo nível.
             services.AddSingleton<IUserData, UserData>();
+            services.AddTransient<DapperDbContext>();
             return services;
 
         }
