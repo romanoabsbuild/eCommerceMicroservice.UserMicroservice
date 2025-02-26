@@ -7,5 +7,10 @@
         string? Gender,
         string? Token,
         bool Success
-        );
+        )
+    {
+        // ParameterLess constructor
+        public AuthenticationResponse() : this(default,default, default, default,default, default )
+        { }
+    }
 }
