@@ -1,9 +1,8 @@
-﻿using eCommerce.Core.DataContracts;
-using Microsoft.Extensions.DependencyInjection;
-
-
+﻿using eCommerce.Core.Services;
 using eCommerce.Core.ServicesContracts;
-using eCommerce.Core.Services;
+using eCommerce.Core.Validators;
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace eCommerce.Core
 {
@@ -16,12 +15,13 @@ namespace eCommerce.Core
         /// <param name="services"></param>
         /// <returns></returns>
         public static IServiceCollection AddCore(this IServiceCollection services)
-    {
-        //TODO: adicionar services ao contêiner de Inversão de Control (IoC - Injecçao de dependência)
-        //dos serviços da Infraestrutura frequentemente incluem serviços de acesso a dados, cache, o outros componentes de baixo nível.
-        services.AddTransient<IUserService, UserService>();
-            return services;
+        {
+            //TODO: adicionar services ao contêiner de Inversão de Control (IoC - Injecçao de dependência)
+            //dos serviços da Infraestrutura frequentemente incluem serviços de acesso a dados, cache, o outros componentes de baixo nível.
+            services.AddTransient<IUserService, UserService>();
+            services.AddValidatorsFromAssemblyContaining<LoginRequestValidator>();
 
+            return services;
+        }
     }
-}
 }

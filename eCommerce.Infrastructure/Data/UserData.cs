@@ -1,37 +1,44 @@
-﻿using eCommerce.Core.DataContracts;
-using eCommerce.Core.Models;
-using System.Diagnostics.CodeAnalysis;
+﻿using Dapper;
+using eCommerce.Core.DataContracts;
 using eCommerce.Core.DTO;
+using eCommerce.Core.Models;
 using eCommerce.Infrastructure.DbContext;
 
 namespace eCommerce.Infrastructure.Data
 {
     internal class UserData : IUserData
     {
-        private readonly DapperDbContext dbContext;
+        private readonly DapperDbContext _dbContext;
 
-        public UserData(DapperDbContext _dbContext)
+        public UserData(DapperDbContext dbContext)
         {
-            dbContext = _dbContext;
+            _dbContext = dbContext;
         }
         public async Task<ApplicationUser?> AddUser(ApplicationUser user)
         {
             // Gerar o UserID
             user.UserID = Guid.NewGuid();
+
+            string query = "INSERT INTO public.\"Users\"(\"UserID\", \"Email\", \"PersonName\", \"Gender\", \"Password\") VALUES(@UserID, @Email, @PersonName, @Gender, @Password)";
             
-            return user;
+            int rowCountAffected =  await _dbContext.DbConnection.ExecuteAsync(query, user);
+
+            if (rowCountAffected > 0) 
+            {
+                return user;
+            }
+            else{
+                return null;
+            }
         }
 
         public async Task<ApplicationUser?> GetUserByEmailAndPassword(string? email, string? password)
         {
-            return new ApplicationUser()
-            {
-                UserID = Guid.NewGuid(),
-                Email = email,
-                Password = password,
-                PersonName = "John Doe",
-                Gender = GenderOptions.Masculino.ToString()
-            };
+
+            string query = "SELECT * FROM public.\"Users\" WHERE \"Email\"=@Email AND \"Password\"=@Password";
+            var parameters = new { Email = email, Password = password };
+            ApplicationUser? user = await _dbContext.DbConnection.QueryFirstOrDefaultAsync<ApplicationUser>(query, parameters);
+            return user;
         }
     }
 }

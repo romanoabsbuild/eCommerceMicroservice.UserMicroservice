@@ -3,6 +3,7 @@ using eCommerce.Core;
 using eCommerce.API.Middleware;
 using System.Text.Json.Serialization;
 using eCommerce.Core.Mappers;
+using FluentValidation.AspNetCore;
 
 namespace eCommerce.API
 {
@@ -22,6 +23,9 @@ namespace eCommerce.API
             });
 
             builder.Services.AddAutoMapper(typeof(ApplicationUserMappingProfile).Assembly);
+
+            //FluentValidations
+            builder.Services.AddFluentValidationAutoValidation();
 
             var app = builder.Build();
 
